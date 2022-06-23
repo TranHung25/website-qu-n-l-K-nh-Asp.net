@@ -1,0 +1,29 @@
+﻿@model List<Quanly.Models.framework.sanpham>
+@{
+    ViewBag.Title = "index";
+    Layout = "~/Views/Shared/_indexLayout.cshtml";
+}
+
+<div class="products-catagories-area clearfix">
+    <div class="amado-pro-catagory clearfix">
+        @foreach (var item in Model.Take(6))
+        {
+
+
+            <!-- Single Catagory -->
+            <div class="single-products-catagory clearfix">
+                <a href="@Url.Action("Index", "Chitietsanpham", new {Id = item.id_sanpham })">
+                    <img src="~/Areas/assest/FileUpload/@item.hinhanh" alt="">
+                    <!-- Hover Content -->
+                    <div class="hover-content">
+                        <div class="line"></div>
+                        <p>@item.giasp</p>
+                        <h4>@item.tensanpham</h4>
+                    </div>
+                </a>
+            </div>
+
+        }
+    </div>
+</div>
+

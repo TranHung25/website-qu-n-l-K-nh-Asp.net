@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Quanly.Models.framework.tintuc>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layoutadmin.cshtml";
+}
+
+<h2>Tin Tức - Bài Viết</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+           Bài Viết
+        </th>
+        <th>
+            Mô Tả
+        </th>
+        <th>
+            Hình Ảnh
+        </th>
+        <th>
+            Danh Mục
+        </th>
+        <th>
+            Chức Năng
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.tenbaiviet)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.mota)
+    </td>
+    <td>
+        <img src="~/Areas/assest/FileUpload/@Html.DisplayFor(modelItem => item.hinhanh)" style="height:60px;" />
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.danhmuc_tin.tendanhmuc)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.baiviet_id }) |
+        @Html.ActionLink("Details", "Details", new { id = item.baiviet_id }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.baiviet_id })
+    </td>
+</tr>
+}
+
+</table>

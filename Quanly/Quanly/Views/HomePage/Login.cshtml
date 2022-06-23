@@ -1,0 +1,57 @@
+﻿@model Quanly.Models.framework.User
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_indexLayout.cshtml";
+}
+
+
+<div class="cart-table-area section-padding-100">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-lg-8">
+                <div class="checkout_details_area mt-50 clearfix">
+
+                    <div class="cart-title">
+                        <h2>Checkout</h2>
+                    </div>
+
+                    <form action="#" method="post">
+                        <div class="row">
+                            @using (Html.BeginForm("Login", "HomePage", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                <div class="col-md-6 mb-3">
+                                    @Html.LabelFor(m => m.Email)
+                                    @Html.TextBoxFor(m => m.Email, "", new { @class = "form-control", @placeholder = "Email" })
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    @Html.LabelFor(m => m.Password)
+                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <input type="submit" name="submit" class="form-control" id="company" placeholder="Company Name" value="Đăng nhập" style=" background-color: #FBB807; color: black; font-size: 20px; line-height: 4px;cursor:pointer">
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <div class="col-12 btn amado-btn mb-5" style=" background-color: #FBB807; color: black;"><a href="@Url.Action("Register", "HomePage")" style="font-size: 20px;">Đăng Ký</a></div>
+                                </div>
+                            }
+
+                            <div class="col-12">
+                                <div class="custom-control custom-checkbox d-block mb-2">
+                                    <input type="checkbox" class="custom-control-input" id="customCheck2">
+                                    <label class="custom-control-label" for="customCheck2">Create an accout</label>
+                                </div>
+                                <div class="custom-control custom-checkbox d-block">
+                                    <input type="checkbox" class="custom-control-input" id="customCheck3">
+                                    <label class="custom-control-label" for="customCheck3">Ship to a different address</label>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+

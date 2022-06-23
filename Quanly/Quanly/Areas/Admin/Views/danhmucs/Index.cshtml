@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Quanly.Models.framework.danhmuc>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layoutadmin.cshtml";
+}
+
+<h2>Danh Mục Sản Phẩm</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Danh Mục
+        </th>
+        <th>
+            Thứ Tự
+        </th>
+        <th>
+            Chức Năng
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.tendanhmuc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.thutu)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_danhmuc }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_danhmuc }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_danhmuc })
+        </td>
+    </tr>
+}
+
+</table>

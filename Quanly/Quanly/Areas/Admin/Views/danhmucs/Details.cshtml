@@ -1,0 +1,35 @@
+﻿@model Quanly.Models.framework.danhmuc
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layoutadmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>danhmuc</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tendanhmuc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tendanhmuc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.thutu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.thutu)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_danhmuc }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

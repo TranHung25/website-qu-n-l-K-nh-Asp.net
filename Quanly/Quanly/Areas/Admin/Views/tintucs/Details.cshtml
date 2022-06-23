@@ -1,0 +1,51 @@
+﻿@model Quanly.Models.framework.tintuc
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layoutadmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tintuc</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tenbaiviet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tenbaiviet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mota)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mota)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hinhanh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hinhanh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.danhmuc_tin.tendanhmuc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.danhmuc_tin.tendanhmuc)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.baiviet_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,55 @@
+﻿@model Quanly.Models.framework.tintuc
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_indexLayout.cshtml";
+}
+
+<div class="cart-table-area section-padding-100">
+    <div class="container-fluid">
+        <div class="row" style="justify-content: center;">
+            <div class="col-12 col-lg-8">
+                <div class="checkout_details_area mt-50 clearfix">
+
+                    <div class="cart-title" style="text-align: center;">
+                        <h1>@Model.tenbaiviet</h1>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+        <div class="row" style="justify-content: center;">
+            <div class="col-12 col-lg-7">
+                <div class="single_product_thumb">
+                    <div id="product_details_slider" class="carousel slide" data-ride="carousel">
+
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <a class="gallery_img" href="~/assest/img/can-img/kinhcan1.jpg">
+                                    <img class="d-block w-100" src="~/Areas/assest/FileUpload/@Model.hinhanh" alt="First slide">
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="justify-content: center;">
+            <div class="col-12 col-lg-8">
+                <div class="checkout_details_area mt-50 clearfix">
+
+                    <div class="cart-title" style="text-align: center;">
+                        <p>@Model.mota</p>
+                      
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+

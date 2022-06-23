@@ -1,0 +1,110 @@
+﻿@model IEnumerable<Quanly.Models.CartModel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_indexLayout.cshtml";
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $(function () {
+        $("#removecart").click(function () {
+            var model = {};
+            //lấy id sản phẩm
+            model.Id = $("#productid").val();
+            debugger;
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("Remove", "Cart")',
+                data:  JSON.stringify(model) ,
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function () {
+                  
+                    $('#CartCount').text(@Session["count"] - 1);
+                    $("#product-" + model.Id).remove();
+                },
+                error: function () {
+                    alert("Lỗi trong khi thêm vào giỏ hàng!");
+                }
+            });
+            return false;
+        });
+    });
+</script>
+<div class="cart-table-area section-padding-100">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-lg-8">
+                <div class="cart-title mt-50">
+                    <h2>GIỞ HÀNG</h2>
+                </div>
+
+                <div class="cart-table clearfix">
+                    <table class="table table-responsive" tabindex="1" style="overflow: hidden; outline: none;">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Sản phẩm</th>
+                                <th>Giá tiền</th>
+                                <th>Số lượng</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null)
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <tr id="product-@item.sanpham.id_sanpham">
+                                        <td class="cart_product_img">
+                                            <a href="#"><img src="~/Areas/assest/FileUpload/@item.sanpham.hinhanh" alt="Product"></a>
+                                        </td>
+                                        <td class="cart_product_desc">
+                                            <h5>@item.sanpham.tensanpham</h5>
+                                        </td>
+                                        <td class="price">
+                                            <span>@item.sanpham.giasp</span>
+                                        </td>
+                                        <td class="qty">
+                                            <div class="qty-btn d-flex">
+                                                <p>Qty</p>
+                                                <div class="quantity">
+                                                    <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty > 1 ) effect.value--;return false;"><i class="fa fa-minus" aria-hidden="true"></i></span>
+                                                    <input type="number" class="qty-text" id="qty" step="1" min="1" max="300" name="quantity" value="@item.Quantity">
+                                                    <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-plus" aria-hidden="true"></i></span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <input type="hidden"value="@item.sanpham.id_sanpham"id="productid"/>
+                                            <a href="" id="removecart">Remove</a>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                            <p>Chưa có sản phẩm trong giỏ hàng</p>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4">
+                <div class="cart-summary">
+                    <h5>HÓA ĐƠN</h5>
+                    <ul class="summary-table">
+                        <li><span>Giá tiền:</span> <span>@ViewBag.tongtien.ToString("#,##") đ</span></li>
+                        <li><span>Vận chuyển:</span> <span>Free</span></li>
+                        <li><span>Tổng tiền:</span> <span>@ViewBag.tongtien.ToString("#,##") đ</span></li>
+                    </ul>
+                    <div class="cart-btn mt-100">
+                        <a href="@Url.Action("Index", "Payment")" class="btn amado-btn w-100">Checkout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
